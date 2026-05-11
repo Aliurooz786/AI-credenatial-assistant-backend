@@ -1,0 +1,112 @@
+{
+    "info": {
+        "name": "AI Credential Assistant",
+        "_postman_id": "5a1b7e38-b761-4cdd-911d-123456789111",
+        "description": "All APIs for RAG-based AI Credential Assistant",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Health Check",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "http://localhost:8080/",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8080",
+                    "path": [
+                        ""
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Generate Embedding",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "text/plain"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "kibana sit logs"
+                },
+                "url": {
+                    "raw": "http://localhost:8080/api/embedding",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8080",
+                    "path": [
+                        "api",
+                        "embedding"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Save Credential",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n  \"tool\": \"kibana\",\n  \"environment\": \"SIT\",\n  \"url\": \"https://kibana.sit\",\n  \"username\": \"testUser\",\n  \"password\": \"testPass\",\n  \"description\": \"used for SIT log monitoring\"\n}"
+                },
+                "url": {
+                    "raw": "http://localhost:8080/api/credentials",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8080",
+                    "path": [
+                        "api",
+                        "credentials"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Search Credentials",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n  \"query\": \"kibana sit password\"\n}"
+                },
+                "url": {
+                    "raw": "http://localhost:8080/api/search",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8080",
+                    "path": [
+                        "api",
+                        "search"
+                    ]
+                }
+            }
+        }
+    ]
+}
